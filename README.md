@@ -13,3 +13,9 @@ Markdown
 - Answer: We use 201 Created when a new resource is successfully added to the server, such as creating a new dish, while 200 OK is used when a request succeeds but does not create a new resource, like fetching or updating data. Returning 404 Not Found is important because it clearly informs the client that the requested resource does not exist, unlike an empty array or a generic error, which can be confusing. Using the correct status codes makes the API more reliable, predictable, and easier to understand for developers.
 **4. Testing:**
 - ![alt text](image-2.png)
+
+### Why did I choose to Embed the [Review/Tag/Log]?
+- Answer: I choose to embed the Room because these items are tightly connected to the main entity they describe, are usually accessed together, and do not need to exist independently. Embedding keeps the data simple, avoids unnecessary complexity, and makes retrieval more efficient.
+
+### Why did I choose to Reference the [Chef/User/Guest]?
+- Answer: I choose to reference the Guest because these entities can be associated with multiple records, and referencing prevents duplication of their information. This approach allows updates to be managed centrally, ensures consistency across the system, and supports scalability.
