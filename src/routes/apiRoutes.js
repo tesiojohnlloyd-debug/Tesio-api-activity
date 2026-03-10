@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { protect, authorize } = require('../middleware/authMiddleware');
 
 // Import the Controller
 const {
@@ -30,5 +31,8 @@ const {
     router.get('/guests/:id', getGuestById);
     router.put('/guests/:id', updateGuest);
     router.delete('/guests/:id', deleteGuest);
+
+router.get('/', getAllRooms);
+router.post('/', protect, authorize('admin', 'manager'), createRoom);
         
 module.exports = router;

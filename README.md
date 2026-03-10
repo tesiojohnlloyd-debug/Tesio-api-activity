@@ -19,3 +19,19 @@ Markdown
 
 ### Why did I choose to Reference the [Chef/User/Guest]?
 - Answer: I choose to reference the Guest because these entities can be associated with multiple records, and referencing prevents duplication of their information. This approach allows updates to be managed centrally, ensures consistency across the system, and supports scalability.
+
+
+### Authentication vs Authorization:
+- What is the difference between Authentication and Authorization in our
+code?
+- Answer: `Authentication` verifies who the user is, usually through login credentials like a username and password. `Authorization` determines what the user is allowed to do after they are authenticated, such as accessing certain pages or performing specific actions.
+
+### Security (bcrypt):
+- Why did we use bcryptjs instead of saving passwords as plain text in
+MongoDB?
+- Answer: We use `bcryptjs` instead of saving passwords as plain text in MongoDB to keep user passwords secure. bcryptjs hashes (encrypts) the password, so the actual password is not stored in the database. This helps protect users because even if the database is compromised, attackers cannot easily read or use the passwords. Storing passwords as plain text is unsafe since anyone who accesses the database could see all user passwords.
+
+### JWT Structure:
+- What does the protect middleware do when it receives a JWT from the
+client?
+- Answer: When the `protect middleware` receives a `JSON Web Token`, it verifies the token to make sure it is valid and was signed by the server. If the token is valid, the middleware decodes it to get the user’s information (such as the user ID), finds the user in the database, and allows the request to continue to the protected route. If the token is missing or invalid, the middleware blocks the request and returns an unauthorized access error.
